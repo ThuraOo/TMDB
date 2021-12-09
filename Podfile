@@ -9,6 +9,7 @@ target 'TMDB' do
 	pod 'Alamofire'
 	pod 'SwiftyJSON'
 	pod 'RealmSwift'
+  pod 'Kingfisher'
 
   target 'TMDBTests' do
     inherit! :search_paths

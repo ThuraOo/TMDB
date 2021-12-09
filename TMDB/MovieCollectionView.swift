@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 enum MovieSectionType {
     case popular, upcoming
@@ -16,10 +17,13 @@ class MovieCollectionView: UIView {
     @IBOutlet weak var sectionLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     
-    private var cellWidth : CGFloat!
-    private var cellHeight : CGFloat!
+    private var viewModels: [MovieViewModel]!
+    private var cellWidth: CGFloat!
+    private var cellHeight: CGFloat!
+    private var sectionType: MovieSectionType!
     
-    func initiate(for type : MovieSectionType, withSize size : CGSize) {
+    func initiate(for type : MovieSectionType, withSize size : CGSize, viewModel : [MovieViewModel]) {
+        self.viewModels = viewModel
         self.frame = CGRect(x: 0, y: 0, width: size.width, height: size.height)
         self.layoutIfNeeded()
         prepareCollectionView()
@@ -27,6 +31,12 @@ class MovieCollectionView: UIView {
             case .popular : configForPopular()
             case .upcoming : configForUpcoming()
         }
+    }
+    
+    func reloadCollectionWithViewModel(viewModels: [MovieViewModel], for type: MovieSectionType) {
+        self.viewModels = viewModels
+        self.sectionType = type
+        collectionView.reloadData()
     }
     
     private func prepareCollectionView() {
@@ -37,24 +47,27 @@ class MovieCollectionView: UIView {
     }
     
     private func configForPopular() {
+        sectionType = .popular
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 20
         layout.minimumInteritemSpacing = 20
         collectionView.collectionViewLayout = layout
         cellHeight = 200
-        cellWidth = cellHeight * 1.61 //golden ratio
+        cellWidth = (cellHeight - 80) * 1.61 //golden ratio
         sectionLabel.text = "Popular Now"
     }
     
     private func configForUpcoming() {
+        sectionType = .upcoming
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = 20
         layout.minimumInteritemSpacing = 20
         collectionView.collectionViewLayout = layout
         cellWidth = (collectionView.bounds.width - 60) / 2
-        cellHeight = cellWidth * 1.61 //golden ratio
+        cellHeight = (cellWidth * 1.61) + 80 //golden ratio
+        collectionView.isScrollEnabled = false
         sectionLabel.text = "Upcoming Movies"
     }
 }
@@ -72,11 +85,12 @@ extension MovieCollectionView {
 //UICollectionView functions
 extension MovieCollectionView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return viewModels.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCell", for: indexPath) as! MovieCell
+        cell.initiate(with: viewModels[indexPath.row], for: sectionType)
         return cell
     }
     
