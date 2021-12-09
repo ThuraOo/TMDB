@@ -11,30 +11,33 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var popularView: UIView!
     @IBOutlet weak var upcomingView: UIView!
+    @IBOutlet weak var popularViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var upcomingViewHeight: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addPopularView()
-        addUpcomingView()
+        preparePopularView()
+        prepareUpcomingView()
         // Do any additional setup after loading the view.
     }
     
-    private func addPopularView()
+    private func preparePopularView()
     {
-        let nib = UINib(nibName: "MovieCollectionView", bundle: Bundle(for: type(of: self)))
-        let view = nib.instantiate(withOwner: nil, options: nil).first as! MovieCollectionView
+        popularViewHeight.constant = 250
+        let view = MovieCollectionView.loadView(for: self)
         popularView.addSubview(view)
-        view.frame = CGRect(x: 0, y: 0, width: popularView.frame.width, height: popularView.frame.height)
+        popularView.layoutIfNeeded()
+        view.initiate(for: .popular, withSize: CGSize(width: popularView.bounds.width, height: popularView.bounds.height))
     }
     
-    private func addUpcomingView()
+    private func prepareUpcomingView()
     {
-        let nib = UINib(nibName: "MovieCollectionView", bundle: Bundle(for: type(of: self)))
-        let view = nib.instantiate(withOwner: nil, options: nil).first as! MovieCollectionView
+        upcomingViewHeight.constant = 800
+        let view = MovieCollectionView.loadView(for: self)
         upcomingView.addSubview(view)
-        view.frame = CGRect(x: 0, y: 0, width: upcomingView.frame.width, height: upcomingView.frame.height)
+        upcomingView.layoutIfNeeded()
+        view.initiate(for: .upcoming, withSize: CGSize(width: upcomingView.bounds.width, height: upcomingView.bounds.height))
     }
-
 
 }
 
