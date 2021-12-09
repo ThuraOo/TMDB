@@ -32,11 +32,32 @@ class HomePresenter {
         case .popular: output.updatePopularView(viewModels: viewModelArray)
         case .upcoming: output.updateUpcomingView(viewModels: viewModelArray)
         }
-        
+    }
+    
+    private func buildViewModel(data : [MovieCellLocalData]!, for type: MovieSectionType) {
+        var viewModelArray = [MovieViewModel]()
+        for singleData in data {
+            let movieName = singleData.movieName
+            let popularity = singleData.popularity
+            let imgUrl = singleData.imgUrl
+            viewModelArray.append( MovieViewModel(movieName: movieName, popularity: popularity, favorite: false, imgUrl: imgUrl) )
+        }
+        switch type {
+        case .popular: output.updatePopularView(viewModels: viewModelArray)
+        case .upcoming: output.updateUpcomingView(viewModels: viewModelArray)
+        }
     }
 }
 
 extension HomePresenter: HomeInteractorOutPut {
+    func parsePopularMoviesLocalData(data: [MovieCellLocalData]!) {
+        buildViewModel(data: data, for: .popular)
+    }
+    
+    func parseUpcomingMoviesLocalData(data: [MovieCellLocalData]!) {
+        buildViewModel(data: data, for: .upcoming)
+    }
+    
     func parsePopularMoviesData(data : JSON!) {
         buildViewModel(data: data, for: .popular)
     }
