@@ -33,6 +33,7 @@ class MovieCollectionView: UIView {
         }
     }
     
+    //reload the collectionview data after getting the api data
     func reloadCollectionWithViewModel(viewModels: [MovieViewModel], for type: MovieSectionType) {
         self.viewModels = viewModels
         self.sectionType = type

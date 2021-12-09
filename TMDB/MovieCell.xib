@@ -30,7 +30,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Popularity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="thT-kp-JWa">
-                    <rect key="frame" x="0.0" y="326.5" width="394" height="16"/>
+                    <rect key="frame" x="0.0" y="323" width="394" height="16"/>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -44,7 +44,7 @@
                 <constraint firstItem="mrG-Qx-bci" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="KQi-Sc-yE4"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="thT-kp-JWa" secondAttribute="trailing" constant="20" id="OzF-Zg-mW3"/>
                 <constraint firstItem="mrG-Qx-bci" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="WV6-BN-yly"/>
-                <constraint firstItem="thT-kp-JWa" firstAttribute="top" secondItem="vZt-n9-jmf" secondAttribute="bottom" constant="8.5" id="dYI-Oz-zik"/>
+                <constraint firstItem="thT-kp-JWa" firstAttribute="top" secondItem="vZt-n9-jmf" secondAttribute="bottom" constant="5" id="dYI-Oz-zik"/>
                 <constraint firstItem="vZt-n9-jmf" firstAttribute="top" secondItem="mrG-Qx-bci" secondAttribute="bottom" constant="10" id="g9K-vt-bLu"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="mrG-Qx-bci" secondAttribute="bottom" constant="80" id="gHT-Y4-r77"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="vZt-n9-jmf" secondAttribute="trailing" constant="20" id="vXV-Mt-ddJ"/>

@@ -34,6 +34,11 @@ class HomeViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func reloadAPIData(_ sender: UIBarButtonItem) {
+        loadMovieData()
+        print("api data reloaded")
+    }
+    
     private func configureVIP() { //VIP circle
         let interacter = HomeInteractor()
         let presenter = HomePresenter()
@@ -75,6 +80,20 @@ class HomeViewController: UIViewController {
     {
         upcomingCollectionView.reloadCollectionWithViewModel(viewModels: viewModels, for: .upcoming)
     }
+    
+    private func setProperUpcomingSectionHeight(dataCount: Int) {
+        
+        let cellWidth : CGFloat = (self.view.bounds.width - 60) / 2
+        let cellHeight : CGFloat = (cellWidth * 1.61) + 80 //golden ratio
+        var finalHeight : CGFloat = 0
+        if (dataCount % 2 == 0) {
+            finalHeight = (cellHeight + 20) * CGFloat(dataCount / 2)
+        } else {
+            finalHeight = (cellHeight + 20) * CGFloat(dataCount / 2) + cellHeight + 20
+        }
+        upcomingViewHeight.constant = finalHeight
+        upcomingView.layoutIfNeeded()
+    }
 
 }
 
@@ -85,6 +104,7 @@ extension HomeViewController: HomePresenterOutput {
     
     func updateUpcomingView(viewModels: [MovieViewModel]) {
         reloadUpcomingCollectionView(viewModels: viewModels)
+        setProperUpcomingSectionHeight(dataCount: viewModels.count)
     }
 }
 
