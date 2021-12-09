@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MovieCollectionView" customModule="TMDB" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="410"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Popluar Now" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zul-uf-Qil">
+                    <rect key="frame" x="20" y="59" width="374" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="gd6-Eu-UgZ">
+                    <rect key="frame" x="0.0" y="94" width="414" height="316"/>
+                    <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="6y9-rW-TfG">
+                        <size key="itemSize" width="128" height="128"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBrownColor"/>
+            <constraints>
+                <constraint firstItem="Zul-uf-Qil" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="15" id="5M0-xn-VcC"/>
+                <constraint firstItem="gd6-Eu-UgZ" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="50" id="ISR-cX-ye9"/>
+                <constraint firstItem="gd6-Eu-UgZ" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="LTK-Kt-nJi"/>
+                <constraint firstItem="Zul-uf-Qil" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="W23-dL-snf"/>
+                <constraint firstItem="gd6-Eu-UgZ" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="W4b-Qd-524"/>
+                <constraint firstItem="gd6-Eu-UgZ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="iFr-YJ-Khx"/>
+                <constraint firstAttribute="trailing" secondItem="Zul-uf-Qil" secondAttribute="trailing" constant="20" id="jFp-oL-3Yl"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="131.8840579710145" y="-62.946428571428569"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBrownColor">
+            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

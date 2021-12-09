@@ -10,6 +10,8 @@
 		119D5FDF2656A2EF5E766E5A /* Pods_TMDBTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17DEC80BE2F064EBB84F8A24 /* Pods_TMDBTests.framework */; };
 		52258F3FBE82E9F4BE75FF00 /* Pods_TMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C40D0ABBC0E769F5FE26566 /* Pods_TMDB.framework */; };
 		621B42F5BE9348CD92B0D041 /* Pods_TMDB_TMDBUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 517A5D5CE9ACDDD3D06CCF5F /* Pods_TMDB_TMDBUITests.framework */; };
+		B457FBD4276244A800BE7A27 /* MovieCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B457FBD3276244A800BE7A27 /* MovieCollectionView.xib */; };
+		B457FBD6276249AD00BE7A27 /* MovieCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B457FBD5276249AD00BE7A27 /* MovieCollectionView.swift */; };
 		B480C65F276238C400A20EE8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B480C65E276238C400A20EE8 /* AppDelegate.swift */; };
 		B480C661276238C400A20EE8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B480C660276238C400A20EE8 /* SceneDelegate.swift */; };
 		B480C663276238C400A20EE8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B480C662276238C400A20EE8 /* ViewController.swift */; };
@@ -46,6 +48,8 @@
 		5F6EB0370E6F0A4D78854F90 /* Pods-TMDB-TMDBUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TMDB-TMDBUITests.release.xcconfig"; path = "Target Support Files/Pods-TMDB-TMDBUITests/Pods-TMDB-TMDBUITests.release.xcconfig"; sourceTree = "<group>"; };
 		94D699E7A035731CAE0A801F /* Pods-TMDB.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TMDB.debug.xcconfig"; path = "Target Support Files/Pods-TMDB/Pods-TMDB.debug.xcconfig"; sourceTree = "<group>"; };
 		B35B94DEB78374E714A4616E /* Pods-TMDB.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TMDB.release.xcconfig"; path = "Target Support Files/Pods-TMDB/Pods-TMDB.release.xcconfig"; sourceTree = "<group>"; };
+		B457FBD3276244A800BE7A27 /* MovieCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieCollectionView.xib; sourceTree = "<group>"; };
+		B457FBD5276249AD00BE7A27 /* MovieCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionView.swift; sourceTree = "<group>"; };
 		B480C65B276238C400A20EE8 /* TMDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TMDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B480C65E276238C400A20EE8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B480C660276238C400A20EE8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -123,6 +127,8 @@
 				B480C667276238D400A20EE8 /* Assets.xcassets */,
 				B480C669276238D400A20EE8 /* LaunchScreen.storyboard */,
 				B480C66C276238D400A20EE8 /* Info.plist */,
+				B457FBD3276244A800BE7A27 /* MovieCollectionView.xib */,
+				B457FBD5276249AD00BE7A27 /* MovieCollectionView.swift */,
 			);
 			path = TMDB;
 			sourceTree = "<group>";
@@ -164,7 +170,6 @@
 				D3EE8630E6389FEF7FE9728C /* Pods-TMDBTests.debug.xcconfig */,
 				2C2A20C137E8EF2517572AFE /* Pods-TMDBTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -280,6 +285,7 @@
 				B480C66B276238D400A20EE8 /* LaunchScreen.storyboard in Resources */,
 				B480C668276238D400A20EE8 /* Assets.xcassets in Resources */,
 				B480C666276238C400A20EE8 /* Main.storyboard in Resources */,
+				B457FBD4276244A800BE7A27 /* MovieCollectionView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,6 +416,7 @@
 				B480C663276238C400A20EE8 /* ViewController.swift in Sources */,
 				B480C65F276238C400A20EE8 /* AppDelegate.swift in Sources */,
 				B480C661276238C400A20EE8 /* SceneDelegate.swift in Sources */,
+				B457FBD6276249AD00BE7A27 /* MovieCollectionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -597,6 +604,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -606,7 +614,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -626,6 +634,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -635,7 +644,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
