@@ -19,6 +19,7 @@ class HomePresenter {
         let data = _data["results"].arrayValue
         var viewModelArray = [MovieViewModel]()
         for singleData in data {
+            let id = singleData["id"].intValue
             let movieName = singleData["title"].stringValue
             let popularity = singleData["popularity"].stringValue
             var imgUrl = ""
@@ -26,7 +27,7 @@ class HomePresenter {
             case .popular: imgUrl = singleData["backdrop_path"].stringValue
             case .upcoming: imgUrl = singleData["poster_path"].stringValue
             }
-            viewModelArray.append( MovieViewModel(movieName: movieName, popularity: popularity, favorite: false, imgUrl: imgUrl) )
+            viewModelArray.append( MovieViewModel(id: id, movieName: movieName, popularity: popularity, favorite: false, imgUrl: imgUrl) )
         }
         switch type {
         case .popular: output.updatePopularView(viewModels: viewModelArray)
@@ -37,10 +38,12 @@ class HomePresenter {
     private func buildViewModel(data : [MovieCellLocalData]!, for type: MovieSectionType) {
         var viewModelArray = [MovieViewModel]()
         for singleData in data {
+            let id = singleData.id
             let movieName = singleData.movieName
             let popularity = singleData.popularity
+            let favorite = singleData.favorite
             let imgUrl = singleData.imgUrl
-            viewModelArray.append( MovieViewModel(movieName: movieName, popularity: popularity, favorite: false, imgUrl: imgUrl) )
+            viewModelArray.append( MovieViewModel(id: id, movieName: movieName, popularity: popularity, favorite: favorite, imgUrl: imgUrl) )
         }
         switch type {
         case .popular: output.updatePopularView(viewModels: viewModelArray)

@@ -6,6 +6,7 @@
 //
 
 struct MovieViewModel {
+    var id: Int?
     var movieName: String?
     var popularity: String?
     var favorite: Bool?

@@ -70,6 +70,23 @@ class DataManager {
         return data.toArray()
     }
     
+    static func getFavorite(id: Int) -> Bool {
+        let realm = try! Realm()
+        if let data = realm.objects(MovieCellLocalData.self).filter("id == \(id)").first {
+            return data.favorite
+        }
+        return false
+    }
+    
+    static func toggleFavorite(id: Int) {
+        let realm = try! Realm()
+        if let data = realm.objects(MovieCellLocalData.self).filter("id == \(id)").first {
+            try! realm.write({ 
+                data.favorite = !data.favorite
+            })
+        }
+    }
+    
 }
 
 extension Results {
