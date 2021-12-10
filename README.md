@@ -1,7 +1,7 @@
 # TMDB
 
 Coding Test for The Movie Database API\
-the app is writtenin VIP pattern\
+the app is written in VIP pattern\
 the app has both online and offline features\
 \
 how it works -\
