@@ -9,6 +9,7 @@ import SwiftyJSON
 protocol HomePresenterOutput {
     func updatePopularView(viewModels: [MovieViewModel])
     func updateUpcomingView(viewModels: [MovieViewModel])
+    func toggleOfflineLabel(show: Bool)
 }
 
 class HomePresenter {
@@ -33,6 +34,7 @@ class HomePresenter {
         case .popular: output.updatePopularView(viewModels: viewModelArray)
         case .upcoming: output.updateUpcomingView(viewModels: viewModelArray)
         }
+        output.toggleOfflineLabel(show: false)
     }
     
     private func buildViewModel(data : [MovieCellLocalData]!, for type: MovieSectionType) {
@@ -49,6 +51,7 @@ class HomePresenter {
         case .popular: output.updatePopularView(viewModels: viewModelArray)
         case .upcoming: output.updateUpcomingView(viewModels: viewModelArray)
         }
+        output.toggleOfflineLabel(show: true)
     }
 }
 

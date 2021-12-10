@@ -18,10 +18,9 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var upcomingView: UIView!
     @IBOutlet weak var popularViewHeight: NSLayoutConstraint!
     @IBOutlet weak var upcomingViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var offlineLabel: UILabel!
     
     private var output: HomeViewControllerOutput!
-//    private var popularViewModels: [MovieViewModel]!
-//    private var upcomingViewModels: [MovieViewModel]!
     private var popularCollectionView: MovieCollectionView!
     private var upcomingCollectionView: MovieCollectionView!
     
@@ -94,10 +93,13 @@ class HomeViewController: UIViewController {
         upcomingViewHeight.constant = finalHeight
         upcomingView.layoutIfNeeded()
     }
-
 }
 
 extension HomeViewController: HomePresenterOutput {
+    func toggleOfflineLabel(show: Bool) {
+        offlineLabel.isHidden = !show
+    }
+    
     func updatePopularView(viewModels: [MovieViewModel]) {
         reloadPopularCollectionView(viewModels: viewModels)
     }

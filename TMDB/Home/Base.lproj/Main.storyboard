@@ -61,12 +61,31 @@
                                     </mask>
                                 </variation>
                             </scrollView>
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cannot Connect! Showing offline data" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NRa-bk-RHV">
+                                <rect key="frame" x="20" y="767" width="374" height="75"/>
+                                <color key="backgroundColor" systemColor="systemRedColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="Dsd-am-ihz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="0kE-J4-U0B" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="0rn-eA-uQp"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="0kE-J4-U0B" secondAttribute="bottom" id="4OE-Qb-cEU"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="NRa-bk-RHV" secondAttribute="bottom" constant="20" id="OoL-AE-OcE"/>
+                            <constraint firstItem="NRa-bk-RHV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Vba-MI-Osb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="NRa-bk-RHV" secondAttribute="trailing" constant="20" id="WYd-pA-TWI"/>
                             <constraint firstItem="0kE-J4-U0B" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ZZW-UL-vJo"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0kE-J4-U0B" secondAttribute="trailing" id="kre-xV-IKY"/>
                         </constraints>
@@ -80,6 +99,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="offlineLabel" destination="NRa-bk-RHV" id="YK4-3D-NEM"/>
                         <outlet property="popularView" destination="cET-l5-oUJ" id="La2-Pm-kIr"/>
                         <outlet property="popularViewHeight" destination="gl0-PE-ksR" id="Ayv-ZM-Smy"/>
                         <outlet property="upcomingView" destination="FDt-mv-ubV" id="Mhs-ap-egs"/>
@@ -115,6 +135,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
