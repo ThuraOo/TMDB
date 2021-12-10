@@ -8,19 +8,6 @@
 import RealmSwift
 import SwiftyJSON
 
-class MovieCellLocalData : Object {
-    @objc dynamic var id = -1
-    @objc dynamic var movieName = ""
-    @objc dynamic var popularity = ""
-    @objc dynamic var favorite = false
-    @objc dynamic var imgUrl = ""
-    @objc dynamic var type = ""
-    
-    override static func primaryKey() -> String? {
-        return "id"
-    }
-}
-
 class DataManager {
     
     static func saveMovieCellDataLocal(from _data: JSON!, type: MovieSectionType) {
@@ -28,9 +15,10 @@ class DataManager {
         let realm = try! Realm()
         
         for singleData in data {
-            let movidId = singleData["id"].intValue
-            let movieName = singleData["title"].stringValue
-            let popularity = singleData["popularity"].stringValue
+            let movieCellData = MovieCellLocalData()
+            movieCellData.id = singleData["id"].intValue
+            movieCellData.movieName = singleData["title"].stringValue
+            movieCellData.popularity = singleData["popularity"].stringValue
             var imgUrl = ""
             var sectionType = ""
             switch type {
@@ -42,19 +30,15 @@ class DataManager {
                 sectionType = String(describing: MovieSectionType.upcoming)
             }
             
-            let movieCellData = MovieCellLocalData()
-            movieCellData.id = movidId
-            movieCellData.movieName = movieName
-            movieCellData.popularity = popularity
             movieCellData.imgUrl = imgUrl
             movieCellData.type = sectionType
             
             if let existingData = realm.objects(MovieCellLocalData.self).filter("id == \(movieCellData.id)").first {
                 try! realm.write({ //if id exists, update the realm
-                    existingData.movieName = movieName
-                    existingData.popularity = popularity
-                    existingData.imgUrl = imgUrl
-                    existingData.type = sectionType
+                    existingData.movieName = movieCellData.movieName
+                    existingData.popularity = movieCellData.popularity
+                    existingData.imgUrl = movieCellData.imgUrl
+                    existingData.type = movieCellData.type
                 })
             } else {
                 try! realm.write({ //if id not exist, add the realm
@@ -68,6 +52,50 @@ class DataManager {
         let realm = try! Realm()
         let data = realm.objects(MovieCellLocalData.self).filter("type == '\(String(describing: type))'")
         return data.toArray()
+    }
+    
+    static func saveMovieDetailData(from data: JSON!) {
+        let realm = try! Realm()
+        let movieDetailData = MovieDetailLocalData()
+        
+        movieDetailData.id = data["id"].intValue
+        movieDetailData.movieName = data["title"].stringValue
+        movieDetailData.tagLine = data["tagline"].stringValue
+        movieDetailData.movieDescription = data["overview"].stringValue
+        var productionCompanies = ""
+        let productionCompanysArray = data["production_companies"].arrayValue
+        for company in productionCompanysArray {
+            productionCompanies = productionCompanies + company["name"].stringValue + ", "
+        }
+        movieDetailData.productionCompany = productionCompanies
+        movieDetailData.rating = data["vote_average"].stringValue
+        movieDetailData.popularity = data["popularity"].stringValue
+        movieDetailData.imgUrl = data["poster_path"].stringValue
+        
+        if let existingData = realm.objects(MovieDetailLocalData.self).filter("id == \(movieDetailData.id)").first {
+            try! realm.write({ //if id exists, update the realm
+                existingData.movieName = movieDetailData.movieName
+                existingData.tagLine = movieDetailData.tagLine
+                existingData.movieDescription = movieDetailData.movieDescription
+                existingData.productionCompany = movieDetailData.productionCompany
+                existingData.rating = movieDetailData.rating
+                existingData.popularity = movieDetailData.popularity
+                existingData.imgUrl = movieDetailData.imgUrl
+            })
+        } else {
+            try! realm.write({ //if id not exist, add the realm
+                realm.add(movieDetailData)
+            })
+        }
+    }
+    
+    static func loadMovieDetailDataLocal(id: Int) -> MovieDetailLocalData?{
+        let realm = try! Realm()
+        if let data = realm.objects(MovieDetailLocalData.self).filter("id == \(id)").first {
+            return data
+        } else {
+            return nil
+        }
     }
     
     static func getFavorite(id: Int) -> Bool {

@@ -113,14 +113,33 @@
                                     </mask>
                                 </variation>
                             </scrollView>
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cannot Connect! Showing offline data" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UjH-Q7-0Wc">
+                                <rect key="frame" x="20" y="767" width="374" height="75"/>
+                                <color key="backgroundColor" systemColor="systemRedColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="R03-mH-QGl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="UjH-Q7-0Wc" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="7Ec-yY-6qO"/>
                             <constraint firstItem="jVP-wv-DsO" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="BY8-v9-Z0j"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="jVP-wv-DsO" secondAttribute="bottom" id="Cww-qQ-b5O"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="UjH-Q7-0Wc" secondAttribute="bottom" constant="20" id="SHG-UZ-hrF"/>
                             <constraint firstItem="jVP-wv-DsO" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="avC-Fj-hvq"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="jVP-wv-DsO" secondAttribute="trailing" id="uGg-vy-067"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="UjH-Q7-0Wc" secondAttribute="trailing" constant="20" id="v6Q-qK-KUi"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="qqQ-xl-7Xd">
@@ -131,10 +150,11 @@
                         <outlet property="imgView" destination="i5X-jr-4Np" id="XPE-cD-BzV"/>
                         <outlet property="lblDescription" destination="iws-GE-zJ5" id="dqv-5H-nAy"/>
                         <outlet property="lblMovieName" destination="yLl-CR-Vdh" id="uox-26-f5F"/>
-                        <outlet property="lblPopularity" destination="t6z-7G-fPD" id="gHZ-Ij-Y48"/>
+                        <outlet property="lblPopularity" destination="t6z-7G-fPD" id="6oC-0C-7Iv"/>
                         <outlet property="lblProductionCompany" destination="kCl-eS-cvD" id="3rj-BC-PIb"/>
                         <outlet property="lblRating" destination="bFI-Wu-6WU" id="xAQ-gn-2zA"/>
                         <outlet property="lblTagLine" destination="7JP-sZ-pAB" id="5XI-Xi-E64"/>
+                        <outlet property="offlineLabel" destination="UjH-Q7-0Wc" id="abV-lt-rvn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -164,6 +184,9 @@
         <image name="heart" catalog="system" width="128" height="109"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

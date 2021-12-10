@@ -9,11 +9,18 @@ import SwiftyJSON
 
 protocol MovieDetailInterorOutput {
     func parseMovieDetailData(data: JSON!)
+    func parseMovieDetailLocalData(data: MovieDetailLocalData)
 }
 
 class MovieDetailInteractor {
     
     var output: MovieDetailInterorOutput!
+    
+    private func loadDataFromLocal(id: Int) {
+        if let localData = DataManager.loadMovieDetailDataLocal(id: id) {
+            output.parseMovieDetailLocalData(data: localData)
+        }
+    }
 }
 
 extension MovieDetailInteractor: MovieDetailViewOutput {
@@ -23,6 +30,7 @@ extension MovieDetailInteractor: MovieDetailViewOutput {
                 self.output.parseMovieDetailData(data: JSON(json))
             } else {
                 print(error!)
+                self.loadDataFromLocal(id: id)
             }
         }
     }

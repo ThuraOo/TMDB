@@ -22,6 +22,7 @@ class MovieDetailView: UIViewController {
     @IBOutlet weak var lblRating: UILabel!
     @IBOutlet weak var lblPopularity: UILabel!
     @IBOutlet weak var favoriteBtn: UIBarButtonItem!
+    @IBOutlet weak var offlineLabel: UILabel!
     
     var id: Int!
     private var output: MovieDetailViewOutput!
@@ -74,6 +75,10 @@ class MovieDetailView: UIViewController {
 }
 
 extension MovieDetailView: MovieDetailPresenterOutput {
+    func toggleOfflineLabel(show: Bool) {
+        offlineLabel.isHidden = !show
+    }
+    
     func updateMovieDetailView(viewModel: MovieDetailViewModel) {
         updateView(viewModel: viewModel)
     }
