@@ -22,7 +22,7 @@ class MovieCell : UICollectionViewCell {
         updateFavoriteButton()
         titleLabel.text = viewModel.movieName
         popularityLabel.text = "popularity : \(viewModel.popularity!)"
-        let urlString = "https://image.tmdb.org/t/p/\(Util.imageSize)\(viewModel.imgUrl!)"
+        let urlString = "\(Util.imgBaseURL)\(Util.imageSize)\(viewModel.imgUrl!)"
         imageView.kf.setImage(with: URL(string: urlString))
     }
     

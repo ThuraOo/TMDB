@@ -10,6 +10,7 @@ struct Util {
     static let apiKey = "d788f4fbbc4ca6093a95335db065361f"
     static let language = "en-US"
     static let imageSize = "w500"
+    static let imgBaseURL = "https://image.tmdb.org/t/p/"
 }
 
 struct StoryboardIDs {

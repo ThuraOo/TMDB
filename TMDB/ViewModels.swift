@@ -12,3 +12,14 @@ struct MovieViewModel {
     var favorite: Bool?
     var imgUrl: String?
 }
+
+struct MovieDetailViewModel {
+    var id: Int?
+    var movieName: String?
+    var tagLine: String?
+    var description: String?
+    var productionCompany: String?
+    var rating: String?
+    var popularity: String?
+    var imgUrl: String?
+}

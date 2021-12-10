@@ -92,6 +92,7 @@ extension HomeViewController: MovieCollectionViewProtocol {
         let storyboard = UIStoryboard.init(name: StoryboardIDs.movieDetailView, bundle: Bundle.main)
         let mdv = storyboard.instantiateViewController(withIdentifier: StoryboardIDs.movieDetailView) as! MovieDetailView
         mdv.title = "MovieDetailView"
+        mdv.id = id
         self.navigationController?.pushViewController(mdv, animated: true)
         print("id is \(id)")
     }
