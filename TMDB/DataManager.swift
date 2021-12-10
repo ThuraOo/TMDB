@@ -10,6 +10,7 @@ import SwiftyJSON
 
 class DataManager {
     
+    //Saving and loading popular and upcoming movies locally
     static func saveMovieCellDataLocal(from _data: JSON!, type: MovieSectionType) {
         let data = _data["results"].arrayValue
         let realm = try! Realm()
@@ -54,6 +55,7 @@ class DataManager {
         return data.toArray()
     }
     
+    //saving and loading movie detail data locally
     static func saveMovieDetailData(from data: JSON!) {
         let realm = try! Realm()
         let movieDetailData = MovieDetailLocalData()
@@ -98,6 +100,7 @@ class DataManager {
         }
     }
     
+    //for updating the favorite toggle locally
     static func getFavorite(id: Int) -> Bool {
         let realm = try! Realm()
         if let data = realm.objects(MovieCellLocalData.self).filter("id == \(id)").first {

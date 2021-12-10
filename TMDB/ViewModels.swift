@@ -4,6 +4,7 @@
 //
 //  Created by ThuraOo on 10/12/2021.
 //
+// View-ready models to update the UI
 
 struct MovieViewModel {
     var id: Int?

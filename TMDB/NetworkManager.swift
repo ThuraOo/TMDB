@@ -10,6 +10,7 @@ import SwiftyJSON
 
 class NetworkManager {
     
+    //get popular movies from api
     static func getPopularMovieData( completion: @escaping (Any?, Error?) -> Void) {
         let parms = [
             "api_key" : Util.apiKey,
@@ -25,6 +26,7 @@ class NetworkManager {
         }
     }
     
+    //get upcoming movies from api
     static func getUpcomingMovieData( completion: @escaping (Any?, Error?) -> Void) {
         let parms = [
             "api_key" : Util.apiKey,
@@ -40,6 +42,7 @@ class NetworkManager {
         }
     }
     
+    //get movie detail from api
     static func getMovieDetail(id: Int, completion: @escaping (Any?, Error?) -> Void) {
         let parms = [
             "api_key" : Util.apiKey,

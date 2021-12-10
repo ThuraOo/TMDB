@@ -4,6 +4,7 @@
 //
 //  Created by ThuraOo on 10/12/2021.
 //
+// Realm models to store local
 
 import RealmSwift
 

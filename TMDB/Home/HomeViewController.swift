@@ -33,6 +33,7 @@ class HomeViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    //reload api data
     @IBAction func reloadAPIData(_ sender: UIBarButtonItem) {
         loadMovieData()
         print("api data reloaded")
@@ -46,6 +47,7 @@ class HomeViewController: UIViewController {
         presenter.output = self
     }
     
+    //preparing popular collection view layout before any data calls
     private func preparePopularView()
     {
         popularViewHeight.constant = 250
@@ -56,6 +58,7 @@ class HomeViewController: UIViewController {
         popularCollectionView.initiate(for: .popular, withSize: CGSize(width: popularView.bounds.width, height: popularView.bounds.height), viewModel: [])
     }
     
+    //preparing popular collection view layout before any data calls
     private func prepareUpcomingView()
     {
         upcomingViewHeight.constant = 800
@@ -66,6 +69,7 @@ class HomeViewController: UIViewController {
         upcomingCollectionView.initiate(for: .upcoming, withSize: CGSize(width: upcomingView.bounds.width, height: upcomingView.bounds.height), viewModel: [])
     }
     
+    //getting the api or local data
     private func loadMovieData()
     {
         output.getPopularMovies()
@@ -103,10 +107,12 @@ extension HomeViewController: HomePresenterOutput {
         offlineLabel.isHidden = !show
     }
     
+    //reloading the popular collection view after data recieve
     func updatePopularView(viewModels: [MovieViewModel]) {
         popularCollectionView.reloadCollectionWithViewModel(viewModels: viewModels, for: .popular)
     }
     
+    //reloading the upcoming colleciton view after data recieve
     func updateUpcomingView(viewModels: [MovieViewModel]) {
         upcomingCollectionView.reloadCollectionWithViewModel(viewModels: viewModels, for: .upcoming)
         setProperUpcomingSectionHeight(dataCount: viewModels.count)
