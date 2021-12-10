@@ -12,11 +12,16 @@ enum MovieSectionType {
     case popular, upcoming
 }
 
+protocol MovieCollectionViewProtocol {
+    func showMovieDetailView(id: Int)
+}
+
 class MovieCollectionView: UIView {
     
     @IBOutlet weak var sectionLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     
+    var delegate: MovieCollectionViewProtocol!
     private var viewModels: [MovieViewModel]!
     private var cellWidth: CGFloat!
     private var cellHeight: CGFloat!
@@ -97,5 +102,9 @@ extension MovieCollectionView: UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: cellWidth, height: cellHeight)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate.showMovieDetailView(id: viewModels[indexPath.row].id!)
     }
 }

@@ -50,6 +50,7 @@ class HomeViewController: UIViewController {
     {
         popularViewHeight.constant = 250
         popularCollectionView = MovieCollectionView.loadView(for: self)
+        popularCollectionView.delegate = self
         popularView.addSubview(popularCollectionView)
         popularView.layoutIfNeeded()
         popularCollectionView.initiate(for: .popular, withSize: CGSize(width: popularView.bounds.width, height: popularView.bounds.height), viewModel: [])
@@ -59,6 +60,7 @@ class HomeViewController: UIViewController {
     {
         upcomingViewHeight.constant = 800
         upcomingCollectionView = MovieCollectionView.loadView(for: self)
+        upcomingCollectionView.delegate = self
         upcomingView.addSubview(upcomingCollectionView)
         upcomingView.layoutIfNeeded()
         upcomingCollectionView.initiate(for: .upcoming, withSize: CGSize(width: upcomingView.bounds.width, height: upcomingView.bounds.height), viewModel: [])
@@ -68,16 +70,6 @@ class HomeViewController: UIViewController {
     {
         output.getPopularMovies()
         output.getUpcomingMovies()
-    }
-    
-    private func reloadPopularCollectionView(viewModels: [MovieViewModel])
-    {
-        popularCollectionView.reloadCollectionWithViewModel(viewModels: viewModels, for: .popular)
-    }
-    
-    private func reloadUpcomingCollectionView(viewModels: [MovieViewModel])
-    {
-        upcomingCollectionView.reloadCollectionWithViewModel(viewModels: viewModels, for: .upcoming)
     }
     
     private func setProperUpcomingSectionHeight(dataCount: Int) {
@@ -95,17 +87,27 @@ class HomeViewController: UIViewController {
     }
 }
 
+extension HomeViewController: MovieCollectionViewProtocol {
+    func showMovieDetailView(id: Int) {
+        let storyboard = UIStoryboard.init(name: StoryboardIDs.movieDetailView, bundle: Bundle.main)
+        let mdv = storyboard.instantiateViewController(withIdentifier: StoryboardIDs.movieDetailView) as! MovieDetailView
+        mdv.title = "MovieDetailView"
+        self.navigationController?.pushViewController(mdv, animated: true)
+        print("id is \(id)")
+    }
+}
+
 extension HomeViewController: HomePresenterOutput {
     func toggleOfflineLabel(show: Bool) {
         offlineLabel.isHidden = !show
     }
     
     func updatePopularView(viewModels: [MovieViewModel]) {
-        reloadPopularCollectionView(viewModels: viewModels)
+        popularCollectionView.reloadCollectionWithViewModel(viewModels: viewModels, for: .popular)
     }
     
     func updateUpcomingView(viewModels: [MovieViewModel]) {
-        reloadUpcomingCollectionView(viewModels: viewModels)
+        upcomingCollectionView.reloadCollectionWithViewModel(viewModels: viewModels, for: .upcoming)
         setProperUpcomingSectionHeight(dataCount: viewModels.count)
     }
 }

@@ -47,7 +47,6 @@ class HomeInteractor {
     
     private func loadDataFromLocal(type: MovieSectionType) {
         let localData = DataManager.loadMovieCellDataLocal(type: type)
-//        print("local data is \(localData)")
         if (type == .popular) {
             output.parsePopularMoviesLocalData(data: localData)
         } else
